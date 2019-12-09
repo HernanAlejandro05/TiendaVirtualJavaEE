@@ -26,5 +26,5 @@ public class Caja {
 	public void setSaldoTotal(double saldoTotal) {
 		this.saldoTotal = saldoTotal;
 	}
-	
+	//cambios
 }
