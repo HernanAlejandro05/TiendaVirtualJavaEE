@@ -4,12 +4,15 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Factura {
 
 	@Id
 	private int codigo;
+	@Temporal(TemporalType.DATE)
 	private Date fecha;
 	private double subTotal;
 	private double iva;

@@ -1,16 +1,26 @@
 package ec.edu.ups.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class DetalleFactura {
 
 	@Id
+	@Column (name= "det_codigo")
 	private int codigo;
+	@Column (name= "det_descripcion")
 	private String descripcion;
+	@Column (name= "det_cantidad")
+	@NotNull
 	private int cantidad;
-	private double precioUnitario;
+	@Column (name= "det_precioUnitario")
+	@NotNull
+	private double precioUnitario;	
+	@Column (name= "det_precioTotal")
+	@NotNull
 	private double precioTotal;
 	
 	public int getCodigo() {
