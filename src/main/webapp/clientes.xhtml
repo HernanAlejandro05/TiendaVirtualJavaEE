@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+
+</h:head>
+<body>
+
+	<h:form>
+		<center>
+			<h:panelGrid columns="3">
+
+
+				<h:outputText value="Cedula" />
+				<h:inputText value="#{clienteBean.cliente.cedulaRuc}" id="txtCedula" />
+				<h:message for="txtCedula" />
+
+				<h:outputText value="Nombre" />
+				<h:inputText value="#{clienteBean.cliente.nombre}" id="txtNombre" />
+				<h:message for="txtNombre" />
+
+				<h:outputText value="Apellido" />
+				<h:inputText value="#{clienteBean.cliente.apellido}"
+					id="txtApellido" />
+				<h:message for="txtApellido" />
+
+				<h:outputText value="Fecha Nacimiento" />
+				<h:inputText value="#{clienteBean.cliente.fechaNacimiento}"
+					id="txtFechaNac" />
+				<h:message for="txtFechaNac" />
+
+				<h:outputText value="Telefono" />
+				<h:inputText value="#{clienteBean.cliente.telefono}"
+					id="txtTelefono" />
+				<h:message for="txtTelefono" />
+
+				<h:outputText value="Email" />
+				<h:inputText value="#{clienteBean.cliente.email}" id="txtEmail" />
+				<h:message for="txtEmail" />
+				
+				<h:outputText value="Fecha Registro" />
+				<h:inputText value="#{clienteBean.cliente.fechaRegistro}" id="txtFechaReg" />
+				<h:message for="txtFechaReg" />
+				
+			</h:panelGrid>
+		
+
+
+			<h:commandButton action="#{clienteBean.cargarDatos()}"
+				value="Guardar" />
+			<h:commandButton action="listadoclientes" immediate="true" value="Listar" />
+
+		</center>
+	</h:form>
+</body>
+</html>

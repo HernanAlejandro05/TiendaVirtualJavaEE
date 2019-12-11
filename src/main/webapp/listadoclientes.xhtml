@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+
+	<h:form>
+
+		<h:messages globalOnly="true" />
+
+		<!--	<h:outputLabel /> -->
+	<!--	<h:panelGrid columns="3">-->
+
+	
+
+			<h:dataTable value="#{clienteBean.listaClientes}" var="cliente"
+				border="4">
+				<f:facet name="header">Listado Clientes</f:facet>
+
+				<h:column>
+					<f:facet name="header">Cedula</f:facet>
+			#{cliente.cedulaRuc}
+		</h:column>
+
+				<h:column>
+					<f:facet name="header">Nombre</f:facet>
+			#{cliente.nombre}
+		</h:column>
+
+				<h:column>
+					<f:facet name="header">Apellido</f:facet>
+			#{cliente.apellido}
+		</h:column>
+
+				<h:column>
+					<f:facet name="header">Fecha Nacimiento</f:facet>
+			#{cliente.fechaNacimiento}
+		</h:column>
+
+				<h:column>
+					<f:facet name="header">Telefono</f:facet>
+			#{cliente.telefono}
+		</h:column>
+
+				<h:column>
+					<f:facet name="header">Email</f:facet>
+			#{cliente.email}
+		
+		</h:column>
+				<h:column>
+					<f:facet name="header">Clave</f:facet>
+			#{cliente.clave}
+			
+		</h:column>
+
+		<h:column>
+			<f:facet name="header"> Acciones</f:facet>
+			<h:commandButton action="#{clienteBean.editar(cliente.codigo)}" immediate="true" value="Modificar" />
+			<h:commandButton action="#{clienteBean.borrar(cliente.codigo)}" immediate="true" value="Eliminar" />
+			
+		</h:column>
+
+			</h:dataTable>
+	</h:form>
+</body>
+</html>

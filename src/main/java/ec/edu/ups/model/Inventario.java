@@ -1,33 +1,62 @@
 package ec.edu.ups.model;
 
-import java.util.Date;
 
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Inventario {
 
 	@Id
+	@Column (name = "inv_codigo")
+	@GeneratedValue
 	private int codigo;
-	private Date fecha;
+	@Column (name = "inv_fecha")
+	private String fecha;
+	@Column (name = "inv_desc")
 	private String descripcion;
+	@Column (name = "inv_cant_compra")
 	private int cantidadCompra;
+	@Column (name = "inv_precio_compra")
 	private double precioCompra;
+	@Column (name = "inv_precio_t_compra")
 	private double precioTotalCompra;
+	@Column (name = "inv_cant_venta")
 	private int cantidadVenta;
+	@Column (name = "inv_precio_unit")
 	private double precioUnitario;
+	@Column (name = "inv_pre_existencia")
 	private double precioExistenca;
+	
+
+	@OneToMany (mappedBy="categoria",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	private List<Producto> productos;
+	
+	@OneToOne 
+	@JoinColumn (name = "cab_inv_codigo")
+	private CabeceraInventario cabeceraInventario;
+	
+	
 	public int getCodigo() {
 		return codigo;
 	}
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 	public String getDescripcion() {
@@ -71,6 +100,18 @@ public class Inventario {
 	}
 	public void setPrecioExistenca(double precioExistenca) {
 		this.precioExistenca = precioExistenca;
+	}
+	public List<Producto> getProductos() {
+		return productos;
+	}
+	public void setProductos(List<Producto> productos) {
+		this.productos = productos;
+	}
+	public CabeceraInventario getCabeceraInventario() {
+		return cabeceraInventario;
+	}
+	public void setCabeceraInventario(CabeceraInventario cabeceraInventario) {
+		this.cabeceraInventario = cabeceraInventario;
 	}
 	
 	

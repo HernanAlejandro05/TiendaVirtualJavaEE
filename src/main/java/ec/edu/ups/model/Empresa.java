@@ -1,8 +1,14 @@
 package ec.edu.ups.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -27,6 +33,9 @@ public class Empresa {
 	private String direccion;
 	@Column (name = "emp_anioCreacion")
 	private String anioCreacion;
+	
+	@OneToMany (mappedBy="cliente",cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+	private List<Factura> facturas;
 	
 	public int getCodigo() {
 		return codigo;
@@ -58,6 +67,11 @@ public class Empresa {
 	public void setAnioCreacion(String anioCreacion) {
 		this.anioCreacion = anioCreacion;
 	}
-	
+	public List<Factura> getFacturas() {
+		return facturas;
+	}
+	public void setFacturas(List<Factura> facturas) {
+		this.facturas = facturas;
+	}
 	
 }

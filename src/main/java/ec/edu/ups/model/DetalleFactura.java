@@ -1,8 +1,16 @@
 package ec.edu.ups.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -10,6 +18,7 @@ public class DetalleFactura {
 
 	@Id
 	@Column (name= "det_codigo")
+	@GeneratedValue
 	private int codigo;
 	@Column (name= "det_descripcion")
 	private String descripcion;
@@ -22,6 +31,14 @@ public class DetalleFactura {
 	@Column (name= "det_precioTotal")
 	@NotNull
 	private double precioTotal;
+	
+	@OneToMany (mappedBy="categoria",cascade = CascadeType.ALL ,fetch = FetchType.LAZY)
+	private List<Producto> productos;
+	
+	@OneToOne
+	@JoinColumn (name = "fact_codigo")
+	private Factura factura;
+	
 	
 	public int getCodigo() {
 		return codigo;
@@ -52,6 +69,18 @@ public class DetalleFactura {
 	}
 	public void setPrecioTotal(double precioTotal) {
 		this.precioTotal = precioTotal;
+	}
+	public List<Producto> getProductos() {
+		return productos;
+	}
+	public void setProductos(List<Producto> productos) {
+		this.productos = productos;
+	}
+	public Factura getFactura() {
+		return factura;
+	}
+	public void setFactura(Factura factura) {
+		this.factura = factura;
 	}
 	
 	
